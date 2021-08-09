@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>誕生日管理App</title>
+</head>
+<body>
+<header>
+	<h1>誕生日管理App</h1>
+</header>
+<main>
+	<table>
+		<tr>
+			<th>名前</th>
+			<th>誕生日</th>
+			<th>年齢</th>
+			<th>関係性</th>
+		</tr>
+		<tr th:each="userinfo:${userList}" th:object="${userinfo}"> <!-- 確認のためリスト名と、変数名を変えてある、のちにチェック要 -->
+			<td th:text="*{name}"></td>
+			<td th:text="*{birthday}"></td>
+			<td th:text="*{age}"></td>
+			<td th:text="*{relationship}"></td>
+		</tr>
+	</table>
+</main>
+</body>
+</html>
