@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+
+body {
+	margin:0px;
+}
+
+header{
+	background-color:#ffff80;
+}
+
+header h1{
+	margin:0px;
+	line-height:80px;
+	text-align:center;
+}
+
+main {
+	width:90%;
+	margin:0 auto;
+}
+
+table {
+	background-color:#fff;
+	border-collapse:collapse; /*セルの線を重ねる*/
+}
+
+th, td {
+	border:solid 1px #ddd;
+	padding:10px;
+}
+
+th {
+	background-color:#e2e2e2;
+	/*セル幅はthのみでtdにも自動適用される*/
+}
+
+td {
+	text-align:center;
+}

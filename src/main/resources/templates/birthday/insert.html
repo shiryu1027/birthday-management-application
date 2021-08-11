@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>誕生日管理App</title>
+<link href="/css/insert.css" rel="stylesheet">
+<link href="/css/common.css" rel="stylesheet">
+</head>
+<body>
+<header>
+	<h1>誕生日管理App</h1>
+</header>
+<h2>新規情報登録</h2>
+<main>
+	<form th:action="@{/birthday/insert}" th:method="post">
+		名前:<input name="name" type="text">
+		誕生日:<input name="birthday" type="date">
+		年齢：<input name="age" type="text">
+		関係性:<input name="relationship" type="text">
+		<button>登録</button>
+	</form>
+</main>
+</body>
+</html>

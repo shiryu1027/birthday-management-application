@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.registration_list {
+	display:inline-block;
+}
+
+.insert {
+	margin-left:5px;
+}
+
+/*以下、plan用*/
+.calendar_plan {
+	size:100px;
+	text-align:center;
+	line-height:400px;
+}
