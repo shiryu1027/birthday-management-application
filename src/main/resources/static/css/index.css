@@ -13,4 +13,12 @@
 	size:100px;
 	text-align:center;
 	line-height:400px;
+	width:50%;
+	float:left;
+}
+
+.registration {
+	margin-top:100px;
+	width:50%;
+	float:right;
 }

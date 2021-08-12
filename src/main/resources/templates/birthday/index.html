@@ -14,25 +14,39 @@
 	<div class="calendar_plan">
 		カレンダー
 	</div>
-	<h3 class="registration_list">登録情報一覧</h3><a th:href="@{/birthday/insert}"><button class="insert">新規登録</button></a>
-	<table>
-		<tr>
-			<th>名前</th>
-			<th>誕生日</th>
-			<th>年齢</th>
-			<th>関係性</th>
-			<th>更新</th>
-			<th>削除</th>
-		</tr>
-		<tr th:each="data:${registration}" th:object="${data}"> <!-- 確認のためリスト名と、変数名を変えてある、のちにチェック要 -->
-			<td th:text="*{name}"></td>
-			<td th:text="*{birthday}"></td>
-			<td th:text="*{age}"></td>
-			<td th:text="*{relationship}"></td>
-			<td><a th:href="@{/birthday/update/id={id}(id=*{id})}"><button>更新</button></a></td>
-			<td><form th:action="@{/birthday/delete/id={id}(id=*{id})}" th:method="POST"><button>削除</button></form></td>
-		</tr>
-	</table>
+	<div class="registration">
+		<h3 class="registration_list">登録情報一覧</h3><a th:href="@{/birthday/insert}"><button class="insert">新規登録</button></a>
+		<table>
+			<tr>
+				<th>名前</th>
+				<th>誕生日</th>
+				<th>年齢</th>
+				<th>関係性</th>
+				<th>更新</th>
+				<th>削除</th>
+			</tr>
+			<tr th:each="data:${registration}" th:object="${data}"> <!-- 確認のためリスト名と、変数名を変えてある、のちにチェック要 -->
+				<td th:text="*{name}"></td>
+				<td th:text="*{birthday}"></td>
+				<td th:text="*{age}"></td>
+				<td th:text="*{relationship}"></td>
+				<td><a th:href="@{/birthday/update/id={id}(id=*{id})}"><button>更新</button></a></td>
+				<td><form th:action="@{/birthday/delete/id={id}(id=*{id})}" th:method="POST"><button>削除</button></form></td>
+			</tr>
+		</table>
+	</div>
+	
+	
 </main>
+<footer>
+	<div class="footer-content">
+		<div class="footer-left">
+			<h4>>誕生日管理App</h4>
+		</div>
+		<div class="footer-right">
+			<a href="https://pixabay.com/ja/users/blickpixel-52945/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Michael Schwarzenberger</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Pixabay</a>からの画像
+		</div>
+	</div>
+</footer>
 </body>
 </html>
