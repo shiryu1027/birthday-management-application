@@ -1,8 +1,14 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +40,17 @@ public class BirthdayController {
 	
 	// 新規情報の登録後、ホームページにリダイレクト
 	@PostMapping("/insert")
-	public String insert(@ModelAttribute RegistrationDto registrationDto) {
+	public String insert(@Validated @ModelAttribute RegistrationDto registrationDto, BindingResult result, Model model) {
+		
+		if (result.hasErrors()) { // errorがあるなら・・
+			List<String> errorList = new ArrayList<String>(); // errorListを作成(仮説だが、resultの中のエラーメッセージが配列なので、それを直してる？？)
+			for (ObjectError error : result.getAllErrors()) { // "result.getAllErrors()"=リスト型、それを拡張for文で取り出し
+				errorList.add(error.getDefaultMessage()); // objectErrorのgetDefaultMessage(継承)で、errorのdefaultMessageフィールドを取得。その後、Listに追加
+			}
+			model.addAttribute("validationError", errorList); // errorListをmodelに流す
+			return insertDisplay();
+		}
+		
 		registrationService.insert(registrationDto);
 		return "redirect:/birthday/index";
 	}
