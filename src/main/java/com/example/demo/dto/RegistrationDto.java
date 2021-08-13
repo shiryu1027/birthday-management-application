@@ -18,7 +18,7 @@ public class RegistrationDto {
 	private int id;
 	
 	@NotBlank(message="名前は必須入力です") // messageでエラーメッセージを指定できる
-	@Pattern(regexp=".*/s.*", message="名前の間に半角スペースを入れてください")
+	@Pattern(regexp=".*\s.*", message="名前の間に半角スペースを入れてください")
 	private String name;
 	
 	@NotNull(message="誕生日は必須入力です")

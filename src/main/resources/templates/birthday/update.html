@@ -14,10 +14,15 @@
 <main>
 	<div class="content">
 		<h2>情報更新</h2>
+		<ul> <!-- ulにth:eachを付けないのは、liのループではなくulのループになるから -->
+			<li th:if="${validationError}" th:each="error : ${validationError}" class="error-message">
+				<span th:text="${error}"></span>
+			</li>
+		</ul>
 		<form th:action="@{/birthday/update/id={id}(id=*{id})}" th:object=${registration} th:method="post">
 			名前:<input name="name" type="text" th:field="*{name}">
 			誕生日:<input name="birthday" type="date" th:field="*{birthday}">
-			年齢：<input name="age" type="text" th:field="*{age}">
+			年齢：<input name="age" type="number" th:field="*{age}">
 			関係性:<input name="relationship" type="text" th:field="*{relationship}">
 			<button>登録</button>
 		</form>
