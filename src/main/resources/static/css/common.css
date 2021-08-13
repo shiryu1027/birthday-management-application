@@ -44,6 +44,11 @@ td {
 	text-align:center;
 }
 
+.error-message {
+	color:red;
+	
+}
+
 .footer-content {
 	width:90%;
 	margin:0 auto;

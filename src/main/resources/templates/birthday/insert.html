@@ -8,11 +8,16 @@
 </head>
 <body>
 <header>
-	<h1>誕生日管理App</h1>
+	<h1><a th:href="@{/birthday/index}">誕生日管理App</a></h1>
 </header>
 <main>
 	<div class="content">
 		<h2>新規情報登録</h2>
+		<ul> <!-- ulにth:eachを付けないのは、liのループではなくulのループになるから -->
+			<li th:if="${validationError}" th:each="error : ${validationError}" class="error-message">
+				<span th:text="${error}"></span>
+			</li>
+		</ul>
 		<form th:action="@{/birthday/insert}" th:method="post">
 			名前:<input name="name" type="text">
 			誕生日:<input name="birthday" type="date">
