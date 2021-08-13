@@ -8,7 +8,9 @@
 </head>
 <body>
 <header>
-	<h1><a th:href="@{/birthday/index}">誕生日管理App</a></h1>
+	<div class="header-content">
+		<h1><a th:href="@{/birthday/index}">誕生日管理App</a></h1>
+	</div>
 </header>
 <main>
 	<div class="content">
@@ -20,8 +22,29 @@
 		</ul>
 		<form th:action="@{/birthday/insert}" th:method="post">
 			名前:<input name="name" type="text">
-			誕生日:<input name="birthday" type="date">
-			年齢：<input name="age" type="number" value="0"> <!-- numberにすると、英字が打てなくなる -->
+			<!-- 誕生日:<input name="birthday" type="date"> -->
+			
+			誕生日:
+			<select name="year">
+				<option th:if="${years}" th:each="year:${years}">
+					<span th:text="${year}"></span>
+				</option>
+			</select>
+			年
+			<select name="month">
+				<option th:if="${months}" th:each="month:${months}">
+					<span th:text="${month}"></span>
+				</option>
+			</select>
+			月
+			<select name="date">
+				<option th:if="${dates}" th:each="date:${dates}">
+					<span th:text="${date}"></span>
+				</option>
+			</select>
+			日
+			
+			年齢:<input name="age" type="number" value="0"> <!-- numberにすると、英字が打てなくなる -->
 			関係性:<input name="relationship" type="text">
 			<button>登録</button>
 		</form>
@@ -29,3 +52,5 @@
 </main>
 </body>
 </html>
+
+<!--  -->

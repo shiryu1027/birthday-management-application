@@ -8,7 +8,14 @@
 </head>
 <body>
 <header>
-	<h1>誕生日管理App</h1>
+	<div class="header-content">
+		<div class="header-left">
+			<h1>誕生日管理App</h1>
+		</div>
+		<div class="header-right">
+			<a th:href="@{/birthday/index}">ログイン</a> <!-- リンクは後で、ログインページに変更 -->
+		</div>
+	</div>
 </header>
 <main>
 	<div class="calendar_plan">

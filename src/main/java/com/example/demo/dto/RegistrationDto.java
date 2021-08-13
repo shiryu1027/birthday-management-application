@@ -5,10 +5,8 @@ import java.time.LocalDate;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -21,8 +19,12 @@ public class RegistrationDto {
 	@Pattern(regexp=".*\s.*", message="名前の間に半角スペースを入れてください")
 	private String name;
 	
-	@NotNull(message="誕生日は必須入力です")
-	@DateTimeFormat(pattern="yyyy-MM-dd") //input type="date"で入力する場合、どのような形式で代入されるかを指定する必要がある。
+	private String year;
+	
+	private String month;
+	
+	private String date;
+	
 	private LocalDate birthday;
 	
 	@Max(value=130, message="年齢には130以下を入力して下さい")
@@ -31,4 +33,10 @@ public class RegistrationDto {
 	
 	@NotBlank(message="関係性は必須入力です")
 	private String relationship;
+	
 }
+
+/* @NotNull(message="誕生日は必須入力です")
+ * @DateTimeFormat(pattern="yyyy-MM-dd") //input type="date"で入力する場合、どのような形式で代入されるかを指定する必要がある。
+ * private LocalDate birthday;
+ */

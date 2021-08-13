@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dto.RegistrationDto;
+import com.example.demo.service.DateService;
 import com.example.demo.service.RegistrationService;
+import com.example.demo.service.StringToLocalDate;
 
 @Controller
 @RequestMapping("/birthday")
@@ -24,6 +26,12 @@ public class BirthdayController {
 	
 	@Autowired
 	RegistrationService registrationService;
+	
+	@Autowired
+	DateService dateService;
+	
+	@Autowired
+	StringToLocalDate stringToLocalDate;
 	
 	// ホームぺージ表示
 	@GetMapping("/index")
@@ -34,7 +42,10 @@ public class BirthdayController {
 	
 	// 新規情報登録画面の表示
 	@GetMapping("/insert")
-	public String insertDisplay() {
+	public String insertDisplay(Model model) {
+		model.addAttribute("years",dateService.getYears());
+		model.addAttribute("months",dateService.getMonths());
+		model.addAttribute("dates",dateService.getDates());
 		return "/birthday/insert";
 	}
 	
@@ -48,8 +59,11 @@ public class BirthdayController {
 				errorList.add(error.getDefaultMessage()); // objectErrorのgetDefaultMessage(継承)で、errorのdefaultMessageフィールドを取得。その後、Listに追加
 			}
 			model.addAttribute("validationError", errorList); // errorListをmodelに流す
-			return insertDisplay();
+			return insertDisplay(model);
 		}
+		
+		// insert前に、birthdayフィールドに変換データをセットする
+		registrationDto.setBirthday(stringToLocalDate.stringToLocalDate(registrationDto));
 		
 		registrationService.insert(registrationDto);
 		return "redirect:/birthday/index";
