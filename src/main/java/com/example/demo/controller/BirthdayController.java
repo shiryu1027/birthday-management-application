@@ -64,7 +64,17 @@ public class BirthdayController {
 	
 	// 情報更新後、ホームページへリダイレクト
 	@PostMapping("/update/id={id}")
-	public String update(@ModelAttribute RegistrationDto registrationDto) { //全てのデータを送るなら、@ModelAttribute
+	public String update(@PathVariable("id") int id, @Validated @ModelAttribute RegistrationDto registrationDto, BindingResult result, Model model) { //全てのデータを送るなら、@ModelAttribute
+		
+		if (result.hasErrors()) {
+			List<String> errorList = new ArrayList<String>();
+			for (ObjectError error : result.getAllErrors()) {
+				errorList.add(error.getDefaultMessage());
+			}
+			model.addAttribute("validationError", errorList);
+			return updateDisplay(id, model);
+		}
+		
 		registrationService.update(registrationDto);
 		return "redirect:/birthday/index";
 	}

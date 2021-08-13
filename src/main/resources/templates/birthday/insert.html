@@ -21,7 +21,7 @@
 		<form th:action="@{/birthday/insert}" th:method="post">
 			名前:<input name="name" type="text">
 			誕生日:<input name="birthday" type="date">
-			年齢：<input name="age" type="text">
+			年齢：<input name="age" type="number" value="0"> <!-- numberにすると、英字が打てなくなる -->
 			関係性:<input name="relationship" type="text">
 			<button>登録</button>
 		</form>
