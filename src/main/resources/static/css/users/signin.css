@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.content h2 {
+	text-align:center;
+}
+
+.signin {
+	width:350px;
+	margin:0 auto;
+}
+
+.signin label {
+	display:inline-block;
+	padding-bottom:5px;
+}
+
+.signin input {
+	width:320px;
+	padding:5px;
+	margin-bottom:10px;
+}
+
+.signin button {
+	/*inputのpadding,marginを考慮した値*/
+	width:334px;
+	padding:5px;
+	margin-top:15px;
+}
+
+.signup {
+	width:350px;
+	margin:0 auto;
+	padding-top:20px;
+}
+
+.signup button {
+	width:334px;
+	padding:5px;
+}

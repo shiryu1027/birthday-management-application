@@ -9,14 +9,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.dto.LoginDto;
+import com.example.demo.dto.UsersDto;
 import com.example.demo.service.DateService;
-import com.example.demo.service.LoginService;
+import com.example.demo.service.SignService;
 import com.example.demo.service.StringToLocalDate;
 
 @Controller
 @RequestMapping("/users")
-public class LoginController {
+public class SignController {
+	
+	@Autowired
+	SignService signService;
 	
 	@Autowired
 	DateService dateService;
@@ -24,20 +27,19 @@ public class LoginController {
 	@Autowired
 	StringToLocalDate stringToLocalDate;
 	
-	@Autowired
-	LoginService loginService;
-	
-	@GetMapping("/login")
-	public String loginDisplay() {
-		return "users/login";
+	// サインイン画面の表示
+	@GetMapping("/signin")
+	public String signInDisplay() {
+		return "users/signin";
 	}
 	
-	@PostMapping("/login")
-	public String login(@Validated @ModelAttribute LoginDto loginDto) {
+	// サインイン情報の送信(ログイン)後、ホームぺージに移動
+	@PostMapping("/signin")
+	public String login(@Validated @ModelAttribute UsersDto usersDto) {
 		
 		// if文追加
 		
-		return "birthday/index";
+		return "birthdayManagement/home";
 	}
 	
 	@GetMapping("/registration")
@@ -45,15 +47,15 @@ public class LoginController {
 		model.addAttribute("years",dateService.getYears());
 		model.addAttribute("months",dateService.getMonths());
 		model.addAttribute("dates",dateService.getDates());
-		return "/users/registration";
+		return "users/signup";
 	}
 	
 	@PostMapping("/registration")
-	public String registration(@Validated @ModelAttribute LoginDto loginDto) {
+	public String registration(@Validated @ModelAttribute UsersDto usersDto) {
 		// if文追加する必要あり
-		loginDto.setBirthday(stringToLocalDate.stringToLocalDate(loginDto));
+		usersDto.setBirthday(stringToLocalDate.stringToLocalDate(usersDto));
 		
-		loginService.registration(loginDto);
-		return "redirect:/users/login";
+		signService.signUp(usersDto);
+		return "redirect:/users/signin";
 	}
 }

@@ -21,8 +21,8 @@ import com.example.demo.service.RegistrationService;
 import com.example.demo.service.StringToLocalDate;
 
 @Controller
-@RequestMapping("/birthday")
-public class BirthdayController {
+@RequestMapping("/birthdayManagement")
+public class BirthdayManagementController {
 	
 	@Autowired
 	RegistrationService registrationService;
@@ -37,7 +37,7 @@ public class BirthdayController {
 	@GetMapping("/home")
 	public String home(Model model) {
 		model.addAttribute("registration", registrationService.selectAll());
-		return "/birthday/home"; // requestmappingでまとめても、returnでは必要
+		return "/birthdayManagement/home"; // requestmappingでまとめても、returnでは必要
 	}
 	
 	// 新規情報登録画面の表示
@@ -46,7 +46,7 @@ public class BirthdayController {
 		model.addAttribute("years",dateService.getYears());
 		model.addAttribute("months",dateService.getMonths());
 		model.addAttribute("dates",dateService.getDates());
-		return "/birthday/insert";
+		return "/birthdayManagement/insert";
 	}
 	
 	// 新規情報の登録後、ホームページにリダイレクト
@@ -66,14 +66,14 @@ public class BirthdayController {
 		registrationDto.setBirthday(stringToLocalDate.stringToLocalDate(registrationDto));
 		
 		registrationService.insert(registrationDto);
-		return "redirect:/birthday/home";
+		return "redirect:/birthdayManagement/home";
 	}
 	
 	// 情報更新画面の取得
 	@GetMapping("/update/id={id}")
 	public String updateDisplay(@PathVariable("id") int id, Model model) { // idだけ必要なら、@PathVariable
 		model.addAttribute("registration", registrationService.select(id));
-		return "/birthday/update";
+		return "/birthdayManagement/update";
 	}
 	
 	// 情報更新後、ホームページへリダイレクト
@@ -90,13 +90,13 @@ public class BirthdayController {
 		}
 		
 		registrationService.update(registrationDto);
-		return "redirect:/birthday/home";
+		return "redirect:/birthdayManagement/home";
 	}
 	
 	// 情報削除後、ホームページにリダイレクト
 	@PostMapping("/delete/id={id}")
 	public String delete(@PathVariable("id") int id) {
 		registrationService.delete(id);
-		return "redirect:/birthday/home";
+		return "redirect:/birthdayManagement/home";
 	}
 }

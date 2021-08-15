@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>誕生日管理App</title>
-<link href="/css/index.css" rel="stylesheet">
+<link href="/css/home.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
 </head>
 <body>
@@ -13,7 +13,7 @@
 			<h1>誕生日管理App</h1>
 		</div>
 		<div class="header-right">
-			<a th:href="@{/users/login}">ログイン</a> <!-- リンクは後で、ログインページに変更 -->
+			<a th:href="@{/users/signin}">ログイン</a> <!-- リンクは後で、ログインページに変更 -->
 		</div>
 	</div>
 </header>
@@ -22,7 +22,7 @@
 		カレンダー
 	</div>
 	<div class="registration">
-		<h3 class="registration_list">登録情報一覧</h3><a th:href="@{/birthday/insert}"><button class="insert">新規登録</button></a>
+		<h3 class="registration_list">登録情報一覧</h3><a th:href="@{/birthdayManagement/insert}"><button class="insert">新規登録</button></a>
 		<table>
 			<tr>
 				<th>名前</th>
@@ -37,8 +37,8 @@
 				<td th:text="*{birthday}"></td>
 				<td th:text="*{age}"></td>
 				<td th:text="*{relationship}"></td>
-				<td><a th:href="@{/birthday/update/id={id}(id=*{id})}"><button>更新</button></a></td>
-				<td><form th:action="@{/birthday/delete/id={id}(id=*{id})}" th:method="POST"><button>削除</button></form></td>
+				<td><a th:href="@{/birthdayManagement/update/id={id}(id=*{id})}"><button>更新</button></a></td>
+				<td><form th:action="@{/birthdayManagement/delete/id={id}(id=*{id})}" th:method="POST"><button>削除</button></form></td>
 			</tr>
 		</table>
 	</div>

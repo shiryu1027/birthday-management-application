@@ -2,28 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>誕生日管理App</title>
+<title th:text="#{app.name}"></title>
 <link href="/css/common.css" rel="stylesheet">
+<link href="/css/index.css" rel="stylesheet">
 </head>
 <body>
 <header>
 	<div class="header-content">
 		<div class="header-left">
-			<h1>誕生日管理App</h1>
-			<h1><a th:href="@{/birthday/home}">誕生日管理App</a></h1> <!-- 仮 -->
+			<h1 th:text="#{app.name}"></h1>
 		</div>
 		<div class="header-right">
-			<a th:href="@{/users/login}">ログイン</a>
+			<a th:href="@{/users/signin}" th:text="#{user.signin.title}"></a>
 		</div>
 	</div>
 </header>
 <main>
-
+	<div class="content">
+		<div class="content-left">
+			<p>実際に使っている画像を入れる</p>
+		</div>
+		<div class="content-right">
+			<p>説明文を入れる</p>
+		</div>
+	</div>
 </main>
 <footer>
 	<div class="footer-content">
 		<div class="footer-left">
-			<h4>>誕生日管理App</h4>
+			<h4 th:text="#{app.footer.name}"></h4>
 		</div>
 		<div class="footer-right">
 			<a href="https://pixabay.com/ja/users/blickpixel-52945/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Michael Schwarzenberger</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Pixabay</a>からの画像

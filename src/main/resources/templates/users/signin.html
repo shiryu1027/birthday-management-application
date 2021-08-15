@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{user.signin.title}"></title>
+<link href="/css/users/signin.css" rel="stylesheet">
+<link href="/css/users/common.css" rel="stylesheet">
+</head>
+<body>
+<header>
+	<div class="header-content">
+		<div class="header-left">
+			<h1><a th:href="@{/}" th:text="#{app.name}"></a></h1>
+		</div>
+	</div>
+</header>
+<main>
+	<div class="content">
+		<h2 th:text="#{user.signin.title}"></h2>
+		<div class="signin">
+			<form th:action="@{/users/signin}" method="POST">
+			
+				<!-- メールアドレス -->
+				<label for="mailAdress" th:text="#{mailAdress}"></label><br>
+				<input name="mailAdress" type="email" placeholder="raisetech@gmail.com"> <br>
+				
+				<!-- パスワード -->
+				<label for="password" th:text="#{password}"></label><br>
+				<input type="password" placeholder="パスワード"><br>
+				
+				<button th:text="#{user.signin.title}"></button>
+			</form>
+		</div>
+		<div class="signup">
+			<form th:action="@{/users/registration}"><button th:text="#{user.signup.button.title}"></button></form>
+		</div>
+	</div>
+</main>
+<a th:href="@{/birthdayManagement/home}" th:text="#{app.name}"></a>
+</body>
+</html>
