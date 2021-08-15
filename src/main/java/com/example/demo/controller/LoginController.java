@@ -37,7 +37,7 @@ public class LoginController {
 		
 		// if文追加
 		
-		return "birthday/index";
+		return "birthdayManagement/index";
 	}
 	
 	@GetMapping("/registration")
