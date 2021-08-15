@@ -1,5 +1,62 @@
 @charset "UTF-8";
 
-main {
+main h2 {
 	text-align:center;
 }
+
+.signup {
+	width:300px;
+	margin:0 auto;
+}
+
+.signup label {
+	display:inline-block;
+	padding-bottom:5px;
+	
+}
+
+.signup input {
+	width:270px;
+	padding:5px;
+	margin-bottom:10px;
+}
+
+.signup button {
+	/*inputのpadding,marginを考慮した値*/
+	width:284px;
+	padding:5px;
+	margin-top:15px;
+}
+
+.birthday {
+	padding-bottom:10px;
+}
+
+.birthday label{
+	padding:0 6px;
+}
+
+.birthday-year {
+	display:inline;
+}
+
+.birthday-month {
+	display:inline;
+}
+
+.birthday-date {
+	display:inline;
+}
+
+.birthday-year select {
+	width:70px;
+}
+
+.birthday-month select {
+	width:55px;
+}
+
+.birthday-date select {
+	width:55px;
+}
+

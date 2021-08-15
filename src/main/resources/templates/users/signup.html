@@ -16,7 +16,7 @@
 </header>
 <main>
 	<h2>新規登録フォーム</h2>
-	<div class="login">
+	<div class="signup">
 		<form th:action="@{/users/registration}" method="POST">
 		
 			<!-- メールアドレス -->
@@ -32,24 +32,34 @@
 			<input name="name" type="text" placeholder="佐々木　太郎"><br>
 			
 			<!-- 誕生日 -->
-			<!-- 年 -->
 			<label th:text="#{birthday}"></label><br>
-			<select name="year" >
-				<option th:each="year:${years}">[[${year}]]</option>
-			</select>
-			<label th:text="#{year}"></label>
-			
-			<!-- 月 -->
-			<select name="month">
-				<option th:each="month:${months}">[[${month}]]</option>
-			</select>
-			<label th:text="#{month}"></label>
-			
-			<!-- 日 -->
-			<select name="date">
-				<option th:each="date:${dates}">[[${date}]]</option>
-			</select>
-			<label th:text="#{date}"></label><br>
+			<div class="birthday">
+				<!-- 年 -->
+				<div class="birthday-year">
+					<select name="year">
+						<option th:each="year:${years}">[[${year}]]</option>
+					</select>
+					<label th:text="#{year}"></label>
+				</div>
+				
+				
+				<!-- 月 -->
+				<div class="birthday-month">
+					<select name="month">
+						<option th:each="month:${months}">[[${month}]]</option>
+					</select>
+					<label th:text="#{month}"></label>
+				</div>
+				
+				
+				<!-- 日 -->
+				<div class="birthday-date">
+					<select name="date">
+						<option th:each="date:${dates}">[[${date}]]</option>
+					</select>
+					<label th:text="#{date}"></label><br>
+				</div>
+			</div>
 			
 			<!-- 年齢 -->
 			<label th:text="#{age}"></label><br>
@@ -57,7 +67,7 @@
 			
 			<button>新規登録</button>
 		</form>
-		<form th:action="@{/users/login}">
+		<form th:action="@{/users/signin}">
 			<button th:text="#{user.signin.return}"></button>
 		</form>
 	</div>
