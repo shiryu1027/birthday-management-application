@@ -16,7 +16,7 @@ import com.example.demo.service.StringToLocalDate;
 
 @Controller
 @RequestMapping("/users")
-public class LoginController {
+public class SignInController {
 	
 	@Autowired
 	DateService dateService;
@@ -29,7 +29,7 @@ public class LoginController {
 	
 	@GetMapping("/login")
 	public String loginDisplay() {
-		return "users/login";
+		return "users/signin";
 	}
 	
 	@PostMapping("/login")
@@ -45,7 +45,7 @@ public class LoginController {
 		model.addAttribute("years",dateService.getYears());
 		model.addAttribute("months",dateService.getMonths());
 		model.addAttribute("dates",dateService.getDates());
-		return "/users/registration";
+		return "users/signup";
 	}
 	
 	@PostMapping("/registration")
@@ -54,6 +54,6 @@ public class LoginController {
 		loginDto.setBirthday(stringToLocalDate.stringToLocalDate(loginDto));
 		
 		loginService.registration(loginDto);
-		return "redirect:/users/login";
+		return "redirect:/users/signin";
 	}
 }

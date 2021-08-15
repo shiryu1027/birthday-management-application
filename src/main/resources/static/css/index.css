@@ -1,24 +1,20 @@
 @charset "UTF-8";
 
-.registration_list {
-	display:inline-block;
-}
-
-.insert {
-	margin-left:5px;
-}
-
-/*以下、plan用*/
-.calendar_plan {
-	size:100px;
+.content {
+	width:90%;
+	margin:0 auto;
+	padding-top:100px;
 	text-align:center;
-	line-height:400px;
+}
+
+.content-left{
 	width:50%;
 	float:left;
+	padding:300px 0; /*後に消す*/
 }
 
-.registration {
-	margin-top:100px;
+.content-right{
 	width:50%;
 	float:right;
+	padding:300px 0;/*後に消す*/
 }

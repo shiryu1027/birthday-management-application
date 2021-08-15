@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>新規登録フォーム</title>
+<link href="/css/users/signup.css" rel="stylesheet">
+<link href="/css/users/common.css" rel="stylesheet">
+</head>
+<body>
+<header>
+	<div class="header-content">
+		<div class="header-left">
+			<h1><a th:href="@{/}" th:text="#{app.name}"></a></h1>
+		</div>
+	</div>
+</header>
+<main>
+	<h2>新規登録フォーム</h2>
+	<div class="login">
+		<form th:action="@{/users/registration}" method="POST">
+		
+			<!-- メールアドレス -->
+			<label for="mailAdress" th:text="#{mailAdress}"></label><br>
+			<input name="mailAdress" type="email" placeholder="raisetech@gmail.com"><br>
+			
+			<!-- パスワード -->
+			<label for="password" th:text="#{password}"></label><br>
+			<input name="password" type="password" placeholder="パスワード"><br>
+			
+			<!-- 名前 -->
+			<label for="name" th:text="#{name}"></label><br>
+			<input name="name" type="text" placeholder="佐々木　太郎"><br>
+			
+			<!-- 誕生日 -->
+			<!-- 年 -->
+			<label th:text="#{birthday}"></label><br>
+			<select name="year" >
+				<option th:each="year:${years}">[[${year}]]</option>
+			</select>
+			<label th:text="#{year}"></label>
+			
+			<!-- 月 -->
+			<select name="month">
+				<option th:each="month:${months}">[[${month}]]</option>
+			</select>
+			<label th:text="#{month}"></label>
+			
+			<!-- 日 -->
+			<select name="date">
+				<option th:each="date:${dates}">[[${date}]]</option>
+			</select>
+			<label th:text="#{date}"></label><br>
+			
+			<!-- 年齢 -->
+			<label th:text="#{age}"></label><br>
+			<input name="age" type="number" value="0"><br>
+			
+			<button>新規登録</button>
+		</form>
+		<form th:action="@{/users/login}">
+			<button th:text="#{user.signin.return}"></button>
+		</form>
+	</div>
+</main>
+<a th:href="@{/birthdayManagement/home}">誕生日管理App</a>
+</body>
+</html>
