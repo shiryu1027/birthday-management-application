@@ -9,7 +9,7 @@
 <body>
 <header>
 	<div class="header-content">
-		<h1><a th:href="@{/birthday/index}">誕生日管理App</a></h1>
+		<h1><a th:href="@{/birthday/home}">誕生日管理App</a></h1>
 	</div>
 </header>
 
@@ -23,7 +23,7 @@
 		</ul>
 		<form th:action="@{/birthday/update/id={id}(id=*{id})}" th:object=${registration} th:method="post">
 			名前:<input name="name" type="text" th:field="*{name}">
-			誕生日:<input name="birthday" type="date" th:field="*{birthday}">
+			誕生日:<input name="birthday" type="date" th:field="*{birthday}"> <!-- javascriptでselectedを追加できるように出来ないと、selectタグの実装はきつそう -->
 			年齢：<input name="age" type="number" th:field="*{age}">
 			関係性:<input name="relationship" type="text" th:field="*{relationship}">
 			<button>登録</button>

@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.LoginDto;
 import com.example.demo.dto.RegistrationDto;
 
 @Service
@@ -24,6 +25,23 @@ public class StringToLocalDate {
 		}
 		
 		LocalDate localDate = LocalDate.parse(registrationDto.getYear() + "/" + registrationDto.getMonth() + "/" + registrationDto.getDate(), fmt);
+		
+		return localDate;
+	}
+	
+	public LocalDate stringToLocalDate(LoginDto loginDto) {
+		
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		
+		if (loginDto.getMonth().length() == 1) {
+			loginDto.setMonth(0 + loginDto.getMonth());
+		}
+		
+		if (loginDto.getDate().length() == 1) {
+			loginDto.setDate(0 + loginDto.getDate());
+		}
+		
+		LocalDate localDate = LocalDate.parse(loginDto.getYear() + "/" + loginDto.getMonth() + "/" + loginDto.getDate(), fmt);
 		
 		return localDate;
 	}

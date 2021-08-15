@@ -34,10 +34,10 @@ public class BirthdayController {
 	StringToLocalDate stringToLocalDate;
 	
 	// ホームぺージ表示
-	@GetMapping("/index")
-	public String index(Model model) {
+	@GetMapping("/home")
+	public String home(Model model) {
 		model.addAttribute("registration", registrationService.selectAll());
-		return "/birthday/index"; // requestmappingでまとめても、returnでは必要
+		return "/birthday/home"; // requestmappingでまとめても、returnでは必要
 	}
 	
 	// 新規情報登録画面の表示
@@ -66,7 +66,7 @@ public class BirthdayController {
 		registrationDto.setBirthday(stringToLocalDate.stringToLocalDate(registrationDto));
 		
 		registrationService.insert(registrationDto);
-		return "redirect:/birthday/index";
+		return "redirect:/birthday/home";
 	}
 	
 	// 情報更新画面の取得
@@ -90,13 +90,13 @@ public class BirthdayController {
 		}
 		
 		registrationService.update(registrationDto);
-		return "redirect:/birthday/index";
+		return "redirect:/birthday/home";
 	}
 	
 	// 情報削除後、ホームページにリダイレクト
 	@PostMapping("/delete/id={id}")
 	public String delete(@PathVariable("id") int id) {
 		registrationService.delete(id);
-		return "redirect:/birthday/index";
+		return "redirect:/birthday/home";
 	}
 }

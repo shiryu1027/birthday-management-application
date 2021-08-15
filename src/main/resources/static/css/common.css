@@ -43,6 +43,11 @@ td {
 	text-align:center;
 }
 
+footer {
+	background-color:#fff4f7;
+	height:30px;
+}
+
 .header-content {
 	width:90%;
 	margin:0 auto;
@@ -71,6 +76,7 @@ td {
 .footer-content {
 	width:90%;
 	margin:0 auto;
+	padding-top:5px;
 }
 
 .footer-left {
