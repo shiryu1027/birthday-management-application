@@ -1,14 +1,20 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.dto.SignInDto;
 import com.example.demo.dto.UsersDto;
 import com.example.demo.service.AgeCalculation;
 import com.example.demo.service.DateService;
@@ -33,15 +39,22 @@ public class SignController {
 	
 	// サインイン画面の表示
 	@GetMapping("/signin")
-	public String signInDisplay() {
+	public String signInDisplay(Model model) {
 		return "users/signin";
 	}
 	
 	// サインイン情報の送信(ログイン)後、ホームぺージに移動
 	@PostMapping("/signin")
-	public String login(@Validated @ModelAttribute UsersDto usersDto, Model model) {
+	public String login(@Validated @ModelAttribute SignInDto signDto,BindingResult result, Model model) {
 		
-		// if文追加
+		if(result.hasErrors()) {
+			List<String> errorList = new ArrayList<String>();
+			for (ObjectError error : result.getAllErrors()) { 
+				errorList.add(error.getDefaultMessage());
+			}
+			model.addAttribute("validationError", errorList);
+			return signInDisplay(model);
+		}
 		
 		return "redirect:/birthdayManagement/home";
 	}
@@ -55,8 +68,17 @@ public class SignController {
 	}
 	
 	@PostMapping("/signup")
-	public String signup(@Validated @ModelAttribute UsersDto usersDto) {
-		// if文追加する必要あり
+	public String signup(@Validated @ModelAttribute UsersDto usersDto, BindingResult result, Model model) {
+		
+		if(result.hasErrors()) {
+			List<String> errorList = new ArrayList<String>();
+			for (ObjectError error : result.getAllErrors()) { 
+				errorList.add(error.getDefaultMessage());
+			}
+			model.addAttribute("validationError", errorList);
+			return registrationDisplay(model);
+		}
+		
 		usersDto.setBirthday(stringToLocalDate.stringToLocalDate(usersDto));
 		usersDto.setAge(ageCalculation.ageCalc(usersDto.getBirthday()));
 		

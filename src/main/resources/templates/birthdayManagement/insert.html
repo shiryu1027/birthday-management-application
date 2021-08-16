@@ -15,8 +15,8 @@
 <main>
 	<div class="content">
 		<h2 th:text="#{birthday.list.insert.title}"></h2>
-		<ul> <!-- ulにth:eachを付けないのは、liのループではなくulのループになるから -->
-			<li th:if="${validationError}" th:each="error : ${validationError}" class="error-message">
+		<ul class="error-message"> <!-- ulにth:eachを付けないのは、liのループではなくulのループになるから -->
+			<li th:if="${validationError}" th:each="error : ${validationError}" >
 				<span th:text="${error}"></span>
 			</li>
 		</ul>

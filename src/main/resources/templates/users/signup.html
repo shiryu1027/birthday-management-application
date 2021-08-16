@@ -16,6 +16,13 @@
 </header>
 <main>
 	<h2 th:text=#{user.signup.title}></h2>
+	<div class="error-message">
+		<ul>
+			<li th:if="${validationError}" th:each="error : ${validationError}" class="error-message">
+				<span th:text="${error}"></span>
+			</li>
+		</ul>
+	</div>
 	<div class="signup">
 		<form th:action="@{/users/signup}" method="POST">
 		

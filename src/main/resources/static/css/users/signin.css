@@ -5,7 +5,7 @@
 }
 
 .signin {
-	width:350px;
+	width:300px;
 	margin:0 auto;
 }
 
@@ -15,25 +15,25 @@
 }
 
 .signin input {
-	width:320px;
+	width:270px;
 	padding:5px;
 	margin-bottom:10px;
 }
 
 .signin button {
 	/*inputのpadding,marginを考慮した値*/
-	width:334px;
+	width:284px;
 	padding:5px;
 	margin-top:15px;
 }
 
 .signup {
-	width:350px;
+	width:300px;
 	margin:0 auto;
 	padding-top:20px;
 }
 
 .signup button {
-	width:334px;
+	width:284px;
 	padding:5px;
 }

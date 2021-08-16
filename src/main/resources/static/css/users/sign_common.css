@@ -32,6 +32,12 @@ footer {
 	margin:0 auto;
 }
 
+.error-message {
+	width:300px;
+	margin-left:282px;
+	color:red;;
+}
+
 .footer-content {
 	width:90%;
 	margin:0 auto;

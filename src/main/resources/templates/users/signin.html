@@ -17,6 +17,13 @@
 <main>
 	<div class="content">
 		<h2 th:text="#{user.signin.title}"></h2>
+		<div class="error-message">
+			<ul>
+				<li th:if="${validationError}" th:each="error : ${validationError}" class="error-message">
+					<span th:text="${error}"></span>
+				</li>
+			</ul>
+		</div>
 		<div class="signin">
 			<form th:action="@{/users/signin}" method="POST">
 			
@@ -26,7 +33,7 @@
 				
 				<!-- パスワード -->
 				<label for="password" th:text="#{password}"></label><br>
-				<input type="password" id="password" placeholder="パスワード"><br>
+				<input name="password" type="password" id="password" placeholder="パスワード"><br>
 				
 				<button th:text="#{user.signin.title}"></button>
 			</form>
