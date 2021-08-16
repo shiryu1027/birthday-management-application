@@ -36,7 +36,7 @@ public class RegistrationService {
 	}
 	
 	//登録情報削除
-	public void delete(int id) {
-		registrationMapper.delete(id);
+	public void birthdayListDelete(int id) {
+		registrationMapper.birthdayListDelete(id);
 	}
 }

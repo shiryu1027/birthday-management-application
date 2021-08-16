@@ -22,20 +22,24 @@
 			
 				<!-- メールアドレス -->
 				<label for="mailAdress" th:text="#{mailAdress}"></label><br>
-				<input name="mailAdress" type="email" placeholder="raisetech@gmail.com"> <br>
+				<input name="mailAdress" id="mailAdress" type="email" placeholder="raisetech@gmail.com"> <br>
 				
 				<!-- パスワード -->
 				<label for="password" th:text="#{password}"></label><br>
-				<input type="password" placeholder="パスワード"><br>
+				<input type="password" id="password" placeholder="パスワード"><br>
 				
 				<button th:text="#{user.signin.title}"></button>
 			</form>
 		</div>
 		<div class="signup">
-			<form th:action="@{/users/registration}"><button th:text="#{user.signup.button.title}"></button></form>
+			<form th:action="@{/users/signup}"><button th:text="#{user.signup.button}"></button></form>
 		</div>
 	</div>
 </main>
-<a th:href="@{/birthdayManagement/home}" th:text="#{app.name}"></a>
+<footer>
+	<div class="footer-content">
+		<a th:href="@{/}" th:text="#{app.footer.name}"></a>
+	</div>
+</footer>
 </body>
 </html>

@@ -22,13 +22,13 @@
 		カレンダー
 	</div>
 	<div class="registration">
-		<h3 class="registration_list">登録情報一覧</h3><a th:href="@{/birthdayManagement/insert}"><button class="insert">新規登録</button></a>
+		<h3 class="registration_list">誕生日リスト</h3><a th:href="@{/birthdayManagement/insert}"><button class="insert">新規登録</button></a>
 		<table>
 			<tr>
-				<th>名前</th>
-				<th>誕生日</th>
-				<th>年齢</th>
-				<th>関係性</th>
+				<th th:text="#{name}"></th>
+				<th th:text="#{birthday}"></th>
+				<th th:text="#{age}"></th>
+				<th th:text="#{relationship}"></th>
 				<th>更新</th>
 				<th>削除</th>
 			</tr>
@@ -38,7 +38,7 @@
 				<td th:text="*{age}"></td>
 				<td th:text="*{relationship}"></td>
 				<td><a th:href="@{/birthdayManagement/update/id={id}(id=*{id})}"><button>更新</button></a></td>
-				<td><form th:action="@{/birthdayManagement/delete/id={id}(id=*{id})}" th:method="POST"><button>削除</button></form></td>
+				<td><form th:action="@{/birthdayManagement/birthdayListDelete/id={id}(id=*{id})}" th:method="POST"><button>削除</button></form></td>
 			</tr>
 		</table>
 	</div>
@@ -48,7 +48,7 @@
 <footer>
 	<div class="footer-content">
 		<div class="footer-left">
-			<h4><a th:href="@{/}">>誕生日管理App</a></h4>
+			<h4><a th:href="@{/}" th:text="#{app.footer.name}"></a></h4>
 		</div>
 		<div class="footer-right">
 			<a href="https://pixabay.com/ja/users/blickpixel-52945/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Michael Schwarzenberger</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Pixabay</a>からの画像

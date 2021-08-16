@@ -17,19 +17,19 @@
 <main>
 	<h2>新規登録フォーム</h2>
 	<div class="signup">
-		<form th:action="@{/users/registration}" method="POST">
+		<form th:action="@{/users/signup}" method="POST">
 		
 			<!-- メールアドレス -->
 			<label for="mailAdress" th:text="#{mailAdress}"></label><br>
-			<input name="mailAdress" type="email" placeholder="raisetech@gmail.com"><br>
+			<input name="mailAdress" id="mailAdress" type="email" placeholder="raisetech@gmail.com"><br>
 			
 			<!-- パスワード -->
 			<label for="password" th:text="#{password}"></label><br>
-			<input name="password" type="password" placeholder="パスワード"><br>
+			<input name="password" id="password" type="password" placeholder="パスワード"><br>
 			
 			<!-- 名前 -->
 			<label for="name" th:text="#{name}"></label><br>
-			<input name="name" type="text" placeholder="佐々木　太郎"><br>
+			<input name="name" id="name" type="text" placeholder="佐々木　太郎"><br>
 			
 			<!-- 誕生日 -->
 			<label th:text="#{birthday}"></label><br>
@@ -61,9 +61,9 @@
 				</div>
 			</div>
 			
-			<!-- 年齢 -->
-			<label th:text="#{age}"></label><br>
-			<input name="age" type="number" value="0"><br>
+			<!-- 年齢(削除予定) -->
+			<!--  <label for="age" th:text="#{age}"></label><br>
+			<input name="age" id="age" type="number" value="0"><br> -->
 			
 			<button>新規登録</button>
 		</form>
@@ -72,6 +72,10 @@
 		</form>
 	</div>
 </main>
-<a th:href="@{/birthdayManagement/home}">誕生日管理App</a>
+<footer>
+	<div class="footer-content">
+		<a th:href="@{/}" th:text="#{app.footer.name}"></a>
+	</div>
+</footer>
 </body>
 </html>
