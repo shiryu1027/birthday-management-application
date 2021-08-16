@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dto.UsersDto;
+import com.example.demo.service.AgeCalculation;
 import com.example.demo.service.DateService;
 import com.example.demo.service.SignService;
 import com.example.demo.service.StringToLocalDate;
@@ -27,6 +28,9 @@ public class SignController {
 	@Autowired
 	StringToLocalDate stringToLocalDate;
 	
+	@Autowired
+	AgeCalculation ageCalculation;
+	
 	// サインイン画面の表示
 	@GetMapping("/signin")
 	public String signInDisplay() {
@@ -35,14 +39,14 @@ public class SignController {
 	
 	// サインイン情報の送信(ログイン)後、ホームぺージに移動
 	@PostMapping("/signin")
-	public String login(@Validated @ModelAttribute UsersDto usersDto) {
+	public String login(@Validated @ModelAttribute UsersDto usersDto, Model model) {
 		
 		// if文追加
 		
-		return "birthdayManagement/home";
+		return "redirect:/birthdayManagement/home";
 	}
 	
-	@GetMapping("/registration")
+	@GetMapping("/signup")
 	public String registrationDisplay(Model model) {
 		model.addAttribute("years",dateService.getYears());
 		model.addAttribute("months",dateService.getMonths());
@@ -50,10 +54,11 @@ public class SignController {
 		return "users/signup";
 	}
 	
-	@PostMapping("/registration")
-	public String registration(@Validated @ModelAttribute UsersDto usersDto) {
+	@PostMapping("/signup")
+	public String signup(@Validated @ModelAttribute UsersDto usersDto) {
 		// if文追加する必要あり
 		usersDto.setBirthday(stringToLocalDate.stringToLocalDate(usersDto));
+		usersDto.setAge(ageCalculation.ageCalc(usersDto.getBirthday()));
 		
 		signService.signUp(usersDto);
 		return "redirect:/users/signin";

@@ -2,34 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>誕生日管理App</title>
-<link href="/css/update.css" rel="stylesheet">
-<link href="/css/common.css" rel="stylesheet">
+<title th:text="#{app.name}"></title>
+<link href="/css/birthdayManagement/bm_update.css" rel="stylesheet">
+<link href="/css/birthdayManagement/bm_common.css" rel="stylesheet">
 </head>
 <body>
 <header>
 	<div class="header-content">
-		<h1><a th:href="@{/birthdayManagement/home}">誕生日管理App</a></h1>
+		<h1><a th:href="@{/birthdayManagement/home}" th:text="#{app.name}"></a></h1>
 	</div>
 </header>
 
 <main>
 	<div class="content">
-		<h2>情報更新</h2>
+		<h2 th:text="#{birthday.list.update.title}"></h2>
 		<ul> <!-- ulにth:eachを付けないのは、liのループではなくulのループになるから -->
 			<li th:if="${validationError}" th:each="error : ${validationError}" class="error-message">
 				<span th:text="${error}"></span>
 			</li>
 		</ul>
 		<form th:action="@{/birthdayManagement/update/id={id}(id=*{id})}" th:object=${registration} th:method="post">
-			名前:<input name="name" type="text" th:field="*{name}">
-			誕生日:<input name="birthday" type="date" th:field="*{birthday}"> <!-- javascriptでselectedを追加できるように出来ないと、selectタグの実装はきつそう -->
-			年齢：<input name="age" type="number" th:field="*{age}">
-			関係性:<input name="relationship" type="text" th:field="*{relationship}">
-			<button>登録</button>
+		
+			<!-- 名前 -->
+			<label th:text="#{name}" for="name"></label>
+			<input name="name" type="text" th:field="*{name}"> <!-- 自動でid生成何故？ -->
+			
+			<!-- 誕生日 -->
+			<label th:text="#{birthday}" for="birthday"></label>
+			<input name="birthday" type="date" th:field="*{birthday}"> <!-- javascriptでselectedを追加できるように出来ないと、selectタグの実装はきつそう -->
+			
+			<!-- 年齢 -->
+			<label th:text="#{age}" for="age"></label>
+			<input name="age" type="number" th:field="*{age}">
+			
+			<!-- 関係性 -->
+			<label th:text="#{relationship}" for="relationship"></label>
+			<input name="relationship" type="text" th:field="*{relationship}">
+			
+			<button th:text="#{birthday.list.update.button}"></button>
 		</form>
 	</div>
-	
 </main>
+<footer>
+	<div class="footer-content">
+		<div class="footer-left">
+			<h4><a th:href="@{/birthdayManagement/home}" th:text="#{app.footer.name}"></a></h4>
+		</div>
+		<div class="footer-right">
+			<a href="https://pixabay.com/ja/users/blickpixel-52945/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Michael Schwarzenberger</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Pixabay</a>からの画像
+		</div>
+	</div>
+</footer>
 </body>
 </html>

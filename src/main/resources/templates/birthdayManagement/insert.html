@@ -2,48 +2,73 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>誕生日管理App</title>
-<link href="/css/insert.css" rel="stylesheet">
-<link href="/css/common.css" rel="stylesheet">
+<title th:text="#{app.name}"></title>
+<link href="/css/birthdayManagement/bm_insert.css" rel="stylesheet">
+<link href="/css/birthdayManagement/bm_common.css" rel="stylesheet">
 </head>
 <body>
 <header>
 	<div class="header-content">
-		<h1><a th:href="@{/birthdayManagement/home}">誕生日管理App</a></h1>
+		<h1><a th:href="@{/birthdayManagement/home}" th:text="#{app.name}"></a></h1>
 	</div>
 </header>
 <main>
 	<div class="content">
-		<h2>新規情報登録</h2>
+		<h2 th:text="#{birthday.list.insert.title}"></h2>
 		<ul> <!-- ulにth:eachを付けないのは、liのループではなくulのループになるから -->
 			<li th:if="${validationError}" th:each="error : ${validationError}" class="error-message">
 				<span th:text="${error}"></span>
 			</li>
 		</ul>
 		<form th:action="@{/birthdayManagement/insert}" th:method="post">
-			名前:<input name="name" type="text">
-			<!-- 誕生日:<input name="birthday" type="date"> -->
 			
-			誕生日:
+			<!-- 名前 -->
+			<label th:text="#{name}" for="name"></label>
+			<input name="name" type="text">
+			
+			<!-- 誕生日 -->
+			<label th:text="#{birthday}" for="birthday"></label>
+			
+			<!-- 年 -->
 			<select name="year" >
 				<option th:each="year:${years}">[[${year}]]</option>
 			</select>
-			年
+			<label th:text="#{year}" for="year"></label>
+			
+			<!-- 月 -->
 			<select name="month">
 				<option th:each="month:${months}">[[${month}]]</option>
 			</select>
-			月
+			<label th:text="#{month}" for="month"></label>
+			
+			<!-- 日 -->
 			<select name="date">
 				<option th:each="date:${dates}">[[${date}]]</option>
 			</select>
-			日
+			<label th:text="#{date}" for="date"></label>
 			
-			年齢:<input name="age" type="number" value="0"> <!-- numberにすると、英字が打てなくなる -->
-			関係性:<input name="relationship" type="text">
-			<button>登録</button>
+			<!-- 年齢(削除予定) -->
+			<!--<label th:text="#{age}" for="age"></label>
+			<input name="age" id="age" type="number" value="0"> --> <!-- numberにすると、英字が打てなくなる -->
+			
+			<!-- 関係性 -->
+			<label th:text="#{relationship}" for="relationship"></label>
+			<input name="relationship" id="relationship" type="text">
+			
+			<button th:text="#{birthday.list.insert.button}"></button>
 		</form>
 	</div>
 </main>
+<footer>
+	<div class="footer-content">
+		<div class="footer-left">
+			<h4><a th:href="@{/birthdayManagement/home}" th:text="#{app.footer.name}"></a></h4>
+		</div>
+		<div class="footer-right">
+			<a href="https://pixabay.com/ja/users/blickpixel-52945/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Michael Schwarzenberger</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Pixabay</a>からの画像
+		</div>
+	</div>
+</footer>
 </body>
 </html>
 

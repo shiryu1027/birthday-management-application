@@ -18,7 +18,7 @@
 	UPDATE registration SET name=#{name}, birthday=#{birthday}, age=#{age}, relationship=#{relationship} WHERE id=#{id}
 </update>
 
-<delete id="delete">
+<delete id="birthdayListDelete">
 	DELETE FROM registration WHERE id=#{id}
 </delete>
 

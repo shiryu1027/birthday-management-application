@@ -18,5 +18,5 @@ public interface RegistrationMapper {
 	
 	void update(RegistrationDto registrationDto);
 	
-	void delete(int id);
+	void birthdayListDelete(int id);
 }

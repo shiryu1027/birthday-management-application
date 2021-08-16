@@ -2,18 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>誕生日管理App</title>
-<link href="/css/home.css" rel="stylesheet">
-<link href="/css/common.css" rel="stylesheet">
+<title th:text="#{app.name}"></title>
+<link href="/css/birthdayManagement/bm_home.css" rel="stylesheet">
+<link href="/css/birthdayManagement/bm_common.css" rel="stylesheet">
 </head>
 <body>
 <header>
 	<div class="header-content">
 		<div class="header-left">
-			<h1>誕生日管理App</h1>
+			<h1 th:text="#{app.name}"></h1>
 		</div>
 		<div class="header-right">
-			<a th:href="@{/users/signin}">ログイン</a> <!-- リンクは後で、ログインページに変更 -->
+			<a th:href="@{/users/signin}" th:text="#{user.signin.title}"></a> <!-- ログアウトボタンに変更予定-->
 		</div>
 	</div>
 </header>
@@ -22,23 +22,23 @@
 		カレンダー
 	</div>
 	<div class="registration">
-		<h3 class="registration_list">登録情報一覧</h3><a th:href="@{/birthdayManagement/insert}"><button class="insert">新規登録</button></a>
+		<h3 class="registration_list" th:text="#{birthday.list.title}"></h3><a th:href="@{/birthdayManagement/insert}"><button class="insert" th:text="#{birthday.list.insert.button}"></button></a>
 		<table>
 			<tr>
-				<th>名前</th>
-				<th>誕生日</th>
-				<th>年齢</th>
-				<th>関係性</th>
-				<th>更新</th>
-				<th>削除</th>
+				<th th:text="#{name}"></th>
+				<th th:text="#{birthday}"></th>
+				<th th:text="#{age}"></th>
+				<th th:text="#{relationship}"></th>
+				<th th:text="#{birthday.list.update.button}"></th>
+				<th th:text="#{birthday.list.delete.button}"></th>
 			</tr>
 			<tr th:each="data:${registration}" th:object="${data}"> <!-- 確認のためリスト名と、変数名を変えてある、のちにチェック要 -->
 				<td th:text="*{name}"></td>
 				<td th:text="*{birthday}"></td>
 				<td th:text="*{age}"></td>
 				<td th:text="*{relationship}"></td>
-				<td><a th:href="@{/birthdayManagement/update/id={id}(id=*{id})}"><button>更新</button></a></td>
-				<td><form th:action="@{/birthdayManagement/delete/id={id}(id=*{id})}" th:method="POST"><button>削除</button></form></td>
+				<td><a th:href="@{/birthdayManagement/update/id={id}(id=*{id})}"><button th:text="#{birthday.list.update.button}"></button></a></td>
+				<td><form th:action="@{/birthdayManagement/birthdayListDelete/id={id}(id=*{id})}" th:method="POST"><button th:text="#{birthday.list.delete.button}"></button></form></td>
 			</tr>
 		</table>
 	</div>
@@ -48,7 +48,7 @@
 <footer>
 	<div class="footer-content">
 		<div class="footer-left">
-			<h4><a th:href="@{/}">>誕生日管理App</a></h4>
+			<h4><a th:href="@{/birthdayManagement/}" th:text="#{app.footer.name}"></a></h4>
 		</div>
 		<div class="footer-right">
 			<a href="https://pixabay.com/ja/users/blickpixel-52945/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Michael Schwarzenberger</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Pixabay</a>からの画像

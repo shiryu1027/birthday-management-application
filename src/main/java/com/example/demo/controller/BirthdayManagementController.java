@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dto.RegistrationDto;
+import com.example.demo.service.AgeCalculation;
 import com.example.demo.service.DateService;
 import com.example.demo.service.RegistrationService;
 import com.example.demo.service.StringToLocalDate;
@@ -33,7 +34,16 @@ public class BirthdayManagementController {
 	@Autowired
 	StringToLocalDate stringToLocalDate;
 	
-	// ホームぺージ表示
+	@Autowired
+	AgeCalculation ageCalculation;
+	
+	// ホームぺージ取得
+	@GetMapping("/")
+	public String index() {
+		return "birthdayManagement/index";
+	}
+	
+	// メインページ取得
 	@GetMapping("/home")
 	public String home(Model model) {
 		model.addAttribute("registration", registrationService.selectAll());
@@ -64,6 +74,7 @@ public class BirthdayManagementController {
 		
 		// insert前に、birthdayフィールドに変換データをセットする
 		registrationDto.setBirthday(stringToLocalDate.stringToLocalDate(registrationDto));
+		registrationDto.setAge(ageCalculation.ageCalc(registrationDto.getBirthday()));
 		
 		registrationService.insert(registrationDto);
 		return "redirect:/birthdayManagement/home";
@@ -94,9 +105,9 @@ public class BirthdayManagementController {
 	}
 	
 	// 情報削除後、ホームページにリダイレクト
-	@PostMapping("/delete/id={id}")
-	public String delete(@PathVariable("id") int id) {
-		registrationService.delete(id);
+	@PostMapping("/birthdayListDelete/id={id}")
+	public String birthdayListDString(@PathVariable("id") int id) {
+		registrationService.birthdayListDelete(id);
 		return "redirect:/birthdayManagement/home";
 	}
 }
