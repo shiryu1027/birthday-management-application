@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dto.SignInDto;
 import com.example.demo.dto.UsersDto;
+import com.example.demo.dto.validOrder.GroupOrder;
 import com.example.demo.service.AgeCalculation;
 import com.example.demo.service.DateService;
 import com.example.demo.service.SignService;
@@ -45,7 +46,7 @@ public class SignController {
 	
 	// サインイン情報の送信(ログイン)後、ホームぺージに移動
 	@PostMapping("/signin")
-	public String login(@Validated @ModelAttribute SignInDto signDto,BindingResult result, Model model) {
+	public String login(@Validated(GroupOrder.class) @ModelAttribute SignInDto signDto,BindingResult result, Model model) {
 		
 		if(result.hasErrors()) {
 			List<String> errorList = new ArrayList<String>();
@@ -68,7 +69,7 @@ public class SignController {
 	}
 	
 	@PostMapping("/signup")
-	public String signup(@Validated @ModelAttribute UsersDto usersDto, BindingResult result, Model model) {
+	public String signup(@Validated(GroupOrder.class) @ModelAttribute UsersDto usersDto, BindingResult result, Model model) {
 		
 		if(result.hasErrors()) {
 			List<String> errorList = new ArrayList<String>();
