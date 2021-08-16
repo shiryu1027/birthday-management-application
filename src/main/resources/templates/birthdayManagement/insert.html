@@ -2,19 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>誕生日管理App</title>
-<link href="/css/insert.css" rel="stylesheet">
-<link href="/css/common.css" rel="stylesheet">
+<title th:text="#{app.name}"></title>
+<link href="/css/birthdayManagement/bm_insert.css" rel="stylesheet">
+<link href="/css/birthdayManagement/bm_common.css" rel="stylesheet">
 </head>
 <body>
 <header>
 	<div class="header-content">
-		<h1><a th:href="@{/birthdayManagement/home}">誕生日管理App</a></h1>
+		<h1><a th:href="@{/birthdayManagement/home}" th:text="#{app.name}"></a></h1>
 	</div>
 </header>
 <main>
 	<div class="content">
-		<h2>新規情報登録</h2>
+		<h2 th:text="#{birthday.list.insert.title}"></h2>
 		<ul> <!-- ulにth:eachを付けないのは、liのループではなくulのループになるから -->
 			<li th:if="${validationError}" th:each="error : ${validationError}" class="error-message">
 				<span th:text="${error}"></span>
@@ -55,7 +55,7 @@
 			<label th:text="#{relationship}" for="relationship"></label>
 			<input name="relationship" id="relationship" type="text">
 			
-			<button>登録</button>
+			<button th:text="#{birthday.list.insert.button}"></button>
 		</form>
 	</div>
 </main>

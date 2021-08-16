@@ -37,7 +37,13 @@ public class BirthdayManagementController {
 	@Autowired
 	AgeCalculation ageCalculation;
 	
-	// ホームぺージ表示
+	// ホームぺージ取得
+	@GetMapping("/")
+	public String index() {
+		return "birthdayManagement/index";
+	}
+	
+	// メインページ取得
 	@GetMapping("/home")
 	public String home(Model model) {
 		model.addAttribute("registration", registrationService.selectAll());

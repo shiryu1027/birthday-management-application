@@ -2,20 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>新規登録フォーム</title>
+<title th:text=#{user.signup.title}></title>
 <link href="/css/users/signup.css" rel="stylesheet">
-<link href="/css/users/common.css" rel="stylesheet">
+<link href="/css/users/sign_common.css" rel="stylesheet">
 </head>
 <body>
 <header>
 	<div class="header-content">
 		<div class="header-left">
-			<h1><a th:href="@{/}" th:text="#{app.name}"></a></h1>
+			<h1><a th:href="@{/birthdayManagement/}" th:text="#{app.name}"></a></h1>
 		</div>
 	</div>
 </header>
 <main>
-	<h2>新規登録フォーム</h2>
+	<h2 th:text=#{user.signup.title}></h2>
 	<div class="signup">
 		<form th:action="@{/users/signup}" method="POST">
 		
@@ -65,7 +65,7 @@
 			<!--  <label for="age" th:text="#{age}"></label><br>
 			<input name="age" id="age" type="number" value="0"><br> -->
 			
-			<button>新規登録</button>
+			<button th:text="#{user.signup.post.button}"></button>
 		</form>
 		<form th:action="@{/users/signin}">
 			<button th:text="#{user.signin.return}"></button>
@@ -74,7 +74,7 @@
 </main>
 <footer>
 	<div class="footer-content">
-		<a th:href="@{/}" th:text="#{app.footer.name}"></a>
+		<a th:href="@{/birthdayManagement/}" th:text="#{app.footer.name}"></a>
 	</div>
 </footer>
 </body>

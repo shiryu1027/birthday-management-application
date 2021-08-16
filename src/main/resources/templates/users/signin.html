@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <title th:text="#{user.signin.title}"></title>
 <link href="/css/users/signin.css" rel="stylesheet">
-<link href="/css/users/common.css" rel="stylesheet">
+<link href="/css/users/sign_common.css" rel="stylesheet">
 </head>
 <body>
 <header>
 	<div class="header-content">
 		<div class="header-left">
-			<h1><a th:href="@{/}" th:text="#{app.name}"></a></h1>
+			<h1><a th:href="@{/birthdayManagement/}" th:text="#{app.name}"></a></h1>
 		</div>
 	</div>
 </header>
@@ -32,13 +32,13 @@
 			</form>
 		</div>
 		<div class="signup">
-			<form th:action="@{/users/signup}"><button th:text="#{user.signup.button}"></button></form>
+			<form th:action="@{/users/signup}"><button th:text="#{user.signup.get.button}"></button></form>
 		</div>
 	</div>
 </main>
 <footer>
 	<div class="footer-content">
-		<a th:href="@{/}" th:text="#{app.footer.name}"></a>
+		<a th:href="@{/birthdayManagement/}" th:text="#{app.footer.name}"></a>
 	</div>
 </footer>
 </body>
