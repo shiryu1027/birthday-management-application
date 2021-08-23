@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Error</title>
+</head>
+<body>
+	<h1 th:text="${status} + ' ' + ${error}"></h1>
+	<p th:text="${message}"></p>
+	<p>ログイン画面に戻ってください</p>
+	<form method="post" th:action="@{/users/signin}">
+		<button type="submit">ログイン画面に戻る</button>
+	</form>
+</body>
+</html>
+
+<!-- 
+${status}・・・HTTPのエラーコードが格納されている ex:404 など
+${error}・・・HTTpのエラー概要が表示される
+${message}・・・エラーメッセージが表示される
+ -->
