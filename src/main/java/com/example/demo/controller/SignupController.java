@@ -14,23 +14,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.dto.SignInDto;
 import com.example.demo.dto.UsersDto;
 import com.example.demo.dto.validOrder.GroupOrder;
 import com.example.demo.service.AgeCalculation;
-import com.example.demo.service.DateService;
-import com.example.demo.service.SignService;
+import com.example.demo.service.EachDateList;
+import com.example.demo.service.controllerService.SignService;
 import com.example.demo.service.StringToLocalDate;
 
 @Controller
 @RequestMapping("/users")
-public class SignController {
+public class SignupController {
 	
 	@Autowired
 	SignService signService;
 	
 	@Autowired
-	DateService dateService;
+	EachDateList eachDateList;
 	
 	@Autowired
 	StringToLocalDate stringToLocalDate;
@@ -38,33 +37,11 @@ public class SignController {
 	@Autowired
 	AgeCalculation ageCalculation;
 	
-	// サインイン画面の表示
-	@GetMapping("/signin")
-	public String signInDisplay(Model model) {
-		return "users/signin";
-	}
-	
-	// サインイン情報の送信(ログイン)後、ホームぺージに移動
-	@PostMapping("/signin")
-	public String login(@Validated(GroupOrder.class) @ModelAttribute SignInDto signDto,BindingResult result, Model model) {
-		
-		if(result.hasErrors()) {
-			List<String> errorList = new ArrayList<String>();
-			for (ObjectError error : result.getAllErrors()) { 
-				errorList.add(error.getDefaultMessage());
-			}
-			model.addAttribute("validationError", errorList);
-			return signInDisplay(model);
-		}
-		
-		return "redirect:/birthdayManagement/home";
-	}
-	
 	@GetMapping("/signup")
 	public String registrationDisplay(Model model) {
-		model.addAttribute("years",dateService.getYears());
-		model.addAttribute("months",dateService.getMonths());
-		model.addAttribute("dates",dateService.getDates());
+		model.addAttribute("years", eachDateList.getYears());
+		model.addAttribute("months", eachDateList.getMonths());
+		model.addAttribute("dates", eachDateList.getDates());
 		return "users/signup";
 	}
 	
@@ -80,8 +57,8 @@ public class SignController {
 			return registrationDisplay(model);
 		}
 		
-		usersDto.setBirthday(stringToLocalDate.stringToLocalDate(usersDto));
-		usersDto.setAge(ageCalculation.ageCalc(usersDto.getBirthday()));
+		usersDto.setBirthDate(stringToLocalDate.stringToLocalDate(usersDto));
+		usersDto.setAge(ageCalculation.ageCalc(usersDto.getBirthDate()));
 		
 		signService.signUp(usersDto);
 		return "redirect:/users/signin";

@@ -13,7 +13,7 @@ public class SignInDto {
 	
 	@Email(message="メードアドレス形式で入力して下さい", groups=ValidGroup2.class) //type="Emailにすると、これがいらなくなる　→　Chromeだと自動
 	@NotBlank(message="メールアドレスは必須入力です", groups=ValidGroup1.class)
-	private String mailAdress;
+	private String mailAddress;
 	
 	@NotBlank(message="パスワードは必須入力です", groups=ValidGroup1.class)
 	private String password;

@@ -1,0 +1,25 @@
+<!-- レイアウト用フッターぺージ -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/layout}">
+<head>
+</head>
+<body>
+<footer layout:fragment="footer">
+	<div class="footer-content">
+		<!-- footer-left -->
+		<div class="footer-left">
+			<h4 th:text="#{app.footer.name}"></h4>
+			<!-- 将来的に、ログインしてるかで遷移画面を変える -->
+			<!-- <h4><a th:href="@{/birthdayManagement/}" th:text="#{app.footer.name}"></a></h4> -->
+		</div>
+		<!-- footer-right -->
+		<div class="footer-right">
+			<a href="https://pixabay.com/ja/users/blickpixel-52945/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Michael Schwarzenberger</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Pixabay</a>からの画像
+		</div>
+		
+	</div>
+</footer>
+</body>
+</html>

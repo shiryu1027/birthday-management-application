@@ -1,59 +1,40 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/layout}">
 <head>
-<meta charset="UTF-8">
-<title th:text="#{app.name}"></title>
-<link href="/css/birthdayManagement/bm_home.css" rel="stylesheet">
-<link href="/css/birthdayManagement/bm_common.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title th:text="#{app.name}"></title>
+	<link href="/css/birthdayManagement/bm_home.css" rel="stylesheet">
 </head>
 <body>
-<header>
-	<div class="header-content">
-		<div class="header-left">
-			<h1 th:text="#{app.name}"></h1>
+<main layout:fragment="content">
+	<div class="content">
+		<div class="content-left calendar_plan">
+			カレンダー
 		</div>
-		<div class="header-right">
-			<a th:href="@{/users/signin}" th:text="#{user.signin.title}"></a> <!-- ログアウトボタンに変更予定-->
+		<div class="content-right">
+			<h3 class="celebratedPerson_list" th:text="#{birthday.list.title}"></h3><a th:href="@{/birthdayManagement/insert}"><button class="insert" th:text="#{birthday.list.insert.button}"></button></a>
+			<table>
+				<tr>
+					<th th:text="#{name}"></th>
+					<th th:text="#{birthday}"></th>
+					<th th:text="#{age}"></th>
+					<th th:text="#{relationship}"></th>
+					<th th:text="#{birthday.list.update.button}"></th>
+					<th th:text="#{birthday.list.delete.button}"></th>
+				</tr>
+				<tr th:each="celebratedPerson:${celebratedPersons}" th:object="${celebratedPerson}"> <!-- 確認のためリスト名と、変数名を変えてある、のちにチェック要 -->
+					<td th:text="*{name}"></td>
+					<td th:text="*{birthDate}"></td>
+					<td th:text="*{age}"></td>
+					<td th:text="*{relationship}"></td>
+					<td><a th:href="@{/birthdayManagement/update/id={id}(id=*{personId})}"><button th:text="#{birthday.list.update.button}"></button></a></td>
+					<td><form th:action="@{/birthdayManagement/birthdayListDelete/id={id}(id=*{personId})}" th:method="POST"><button th:text="#{birthday.list.delete.button}"></button></form></td>
+				</tr>
+			</table>
 		</div>
 	</div>
-</header>
-<main>
-	<div class="calendar_plan">
-		カレンダー
-	</div>
-	<div class="registration">
-		<h3 class="registration_list" th:text="#{birthday.list.title}"></h3><a th:href="@{/birthdayManagement/insert}"><button class="insert" th:text="#{birthday.list.insert.button}"></button></a>
-		<table>
-			<tr>
-				<th th:text="#{name}"></th>
-				<th th:text="#{birthday}"></th>
-				<th th:text="#{age}"></th>
-				<th th:text="#{relationship}"></th>
-				<th th:text="#{birthday.list.update.button}"></th>
-				<th th:text="#{birthday.list.delete.button}"></th>
-			</tr>
-			<tr th:each="data:${registration}" th:object="${data}"> <!-- 確認のためリスト名と、変数名を変えてある、のちにチェック要 -->
-				<td th:text="*{name}"></td>
-				<td th:text="*{birthday}"></td>
-				<td th:text="*{age}"></td>
-				<td th:text="*{relationship}"></td>
-				<td><a th:href="@{/birthdayManagement/update/id={id}(id=*{id})}"><button th:text="#{birthday.list.update.button}"></button></a></td>
-				<td><form th:action="@{/birthdayManagement/birthdayListDelete/id={id}(id=*{id})}" th:method="POST"><button th:text="#{birthday.list.delete.button}"></button></form></td>
-			</tr>
-		</table>
-	</div>
-	
-	
 </main>
-<footer>
-	<div class="footer-content">
-		<div class="footer-left">
-			<h4><a th:href="@{/birthdayManagement/}" th:text="#{app.footer.name}"></a></h4>
-		</div>
-		<div class="footer-right">
-			<a href="https://pixabay.com/ja/users/blickpixel-52945/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Michael Schwarzenberger</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Pixabay</a>からの画像
-		</div>
-	</div>
-</footer>
 </body>
 </html>

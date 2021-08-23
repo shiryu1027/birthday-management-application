@@ -1,0 +1,25 @@
+<!-- レイアウト用ヘッダーぺージ -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/layout}">
+<head>
+</head>
+<body>
+<header layout:fragment="header">
+	<div class="header-content">
+		<!-- header-left -->
+		<div class="header-left">
+			<h1><a th:href="@{/birthdayManagement/home}" th:text="#{app.name}"></a></h1>
+			<!-- indexでは、hrefを消す予定 -->
+			<!-- <h1 th:text="#{app.name}"></h1> -->
+		</div>
+		<!-- header-right -->
+		<div class="header-right">
+			<!-- サインインやサインアウトに変更できるようにする予定 -->
+			<a th:href="@{/users/signin}" th:text="#{user.signin.title}"></a>
+		</div>
+	</div>
+</header>
+</body>
+</html>

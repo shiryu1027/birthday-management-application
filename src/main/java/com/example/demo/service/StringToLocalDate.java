@@ -6,25 +6,25 @@ import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.UsersDto;
-import com.example.demo.dto.RegistrationDto;
+import com.example.demo.dto.CelebratedPersonsDto;
 
 @Service
 public class StringToLocalDate {
 	
 	// String型のyear,month,dateを、LocalDate型のbirthdayに代入
-	public LocalDate stringToLocalDate(RegistrationDto registrationDto) {
+	public LocalDate stringToLocalDate(CelebratedPersonsDto celebratedPersonsDto) {
 		
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		
-		if (registrationDto.getMonth().length() == 1) {
-			registrationDto.setMonth(0 + registrationDto.getMonth());
+		if (celebratedPersonsDto.getMonth().length() == 1) {
+			celebratedPersonsDto.setMonth(0 + celebratedPersonsDto.getMonth());
 		}
 		
-		if (registrationDto.getDate().length() == 1) {
-			registrationDto.setDate(0 + registrationDto.getDate());
+		if (celebratedPersonsDto.getDate().length() == 1) {
+			celebratedPersonsDto.setDate(0 + celebratedPersonsDto.getDate());
 		}
 		
-		LocalDate localDate = LocalDate.parse(registrationDto.getYear() + "/" + registrationDto.getMonth() + "/" + registrationDto.getDate(), fmt);
+		LocalDate localDate = LocalDate.parse(celebratedPersonsDto.getYear() + "/" + celebratedPersonsDto.getMonth() + "/" + celebratedPersonsDto.getDate(), fmt);
 		
 		return localDate;
 	}

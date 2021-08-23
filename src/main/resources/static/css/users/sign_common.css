@@ -1,45 +1,27 @@
 @charset "UTF-8";
 
-body {
-	margin:0;
+label {
+	display:inline-block;
+	padding-bottom:5px;
 }
 
-header{
-	background-color:rgb(255, 208, 255);
-	position:fixed;
-	width:100%;
-	opacity:0.9;
+input {
+	width:270px;
+	padding:5px;
+	margin-bottom:10px;
 }
 
-header h1{
-	margin:0px;
-	line-height:80px;
+button {
+	/*inputのpadding,marginを考慮した値*/
+	width:284px;
+	padding:5px;
+	margin-top:15px;
 }
 
-main {
-	height:853px;
-	background-color:#f2f2f2;
-	padding-top:100px;
-}
-
-footer {
-	background-color:#fff4f7;
-	height:30px;
-}
-
-.header-content {
-	width:90%;
-	margin:0 auto;
-}
-
-.error-message {
+.signup, .signin{
 	width:300px;
-	margin-left:282px;
-	color:red;;
+	margin:0 auto;
 }
 
-.footer-content {
-	width:90%;
-	margin:0 auto;
-	padding-top:5px;
-}
+
+

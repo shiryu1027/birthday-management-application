@@ -1,18 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/layout}">
 <head>
-<meta charset="UTF-8">
-<title th:text="#{app.name}"></title>
-<link href="/css/birthdayManagement/bm_insert.css" rel="stylesheet">
-<link href="/css/birthdayManagement/bm_common.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title th:text="#{app.name}"></title>
 </head>
 <body>
-<header>
-	<div class="header-content">
-		<h1><a th:href="@{/birthdayManagement/home}" th:text="#{app.name}"></a></h1>
-	</div>
-</header>
-<main>
+<main layout:fragment="content">
 	<div class="content">
 		<h2 th:text="#{birthday.list.insert.title}"></h2>
 		<ul class="error-message"> <!-- ulにth:eachを付けないのは、liのループではなくulのループになるから -->
@@ -59,19 +54,5 @@
 		</form>
 	</div>
 </main>
-<footer>
-	<div class="footer-content">
-		<div class="footer-left">
-			<h4><a th:href="@{/birthdayManagement/home}" th:text="#{app.footer.name}"></a></h4>
-		</div>
-		<div class="footer-right">
-			<a href="https://pixabay.com/ja/users/blickpixel-52945/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Michael Schwarzenberger</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Pixabay</a>からの画像
-		</div>
-	</div>
-</footer>
 </body>
 </html>
-
-<!-- <select name="year" th:if="${years}" th:each="year:${years}">
-		<option th:text="${year}"></option>
-</select> -->

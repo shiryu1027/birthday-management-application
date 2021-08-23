@@ -7,9 +7,9 @@ import lombok.Data;
 @Data
 public class Users {
 	
-	private int id;
+	private int userId;
 	
-	private String mailAdress;
+	private String mailAddress;
 	
 	private String password;
 	
@@ -21,7 +21,7 @@ public class Users {
 	
 	private String date;
 	
-	private LocalDate birthday;
+	private LocalDate birthDate;
 	
 	private int age;
 }

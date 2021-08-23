@@ -16,11 +16,11 @@ import lombok.Data;
 @Data
 public class UsersDto {
 	
-	private int id;
+	private int userId;
 	
 	@Email(message="メードアドレス形式で入力して下さい")
 	@NotBlank(message="メールアドレスは必須入力です", groups=ValidGroup1.class)
-	private String mailAdress;
+	private String mailAddress;
 	
 	@NotBlank(message="パスワードは必須入力です", groups=ValidGroup1.class)
 	private String password;
@@ -35,7 +35,7 @@ public class UsersDto {
 	
 	private String date;
 	
-	private LocalDate birthday;
+	private LocalDate birthDate;
 	
 	@Max(value=130, message="年齢には130以下を入力して下さい")
 	@Min(value=0, message="年齢には正の値を入力して下さい")

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.CelebratedPersonsMapper">
+
+<resultMap type="com.example.demo.entity.CelebratedPersons" id="celebratedPersons">
+	<id column="person_id" property="personId" />
+	<result column="name" property="name" />
+	<result column="birth_date" property="birthDate" />
+	<result column="age" property="age" />
+	<result column="relationship" property="relationship" />
+</resultMap>
+
+<select id="select" resultMap="celebratedPersons">
+	SELECT * FROM celebrated_persons WHERE person_id=#{PersonId}
+</select>
+
+<select id="selectAll" resultMap="celebratedPersons">
+	SELECT * FROM celebrated_persons
+</select>
+
+<insert id="insert">
+	INSERT INTO celebrated_persons (name, birth_date, age, relationship) VALUES (#{name}, #{birthDate}, #{age}, #{relationship})
+</insert>
+
+<update id="update">
+	UPDATE celebrated_persons SET name=#{name}, birth_date=#{birthDate}, age=#{age}, relationship=#{relationship} WHERE person_id=#{personId}
+</update>
+
+<delete id="birthdayListDelete">
+	DELETE FROM celebrated_persons WHERE person_id=#{personId}
+</delete>
+
+</mapper>

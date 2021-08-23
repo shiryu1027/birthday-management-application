@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/layout}">
 <head>
-<meta charset="UTF-8">
-<title th:text="#{app.name}"></title>
-<link href="/css/birthdayManagement/bm_update.css" rel="stylesheet">
-<link href="/css/birthdayManagement/bm_common.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title th:text="#{app.name}"></title>
 </head>
 <body>
-<header>
-	<div class="header-content">
-		<h1><a th:href="@{/birthdayManagement/home}" th:text="#{app.name}"></a></h1>
-	</div>
-</header>
-
-<main>
+<main layout:fragment="content">
 	<div class="content">
 		<h2 th:text="#{birthday.list.update.title}"></h2>
 		<ul> <!-- ulにth:eachを付けないのは、liのループではなくulのループになるから -->
@@ -21,15 +15,15 @@
 				<span th:text="${error}"></span>
 			</li>
 		</ul>
-		<form th:action="@{/birthdayManagement/update/id={id}(id=*{id})}" th:object=${registration} th:method="post">
+		<form th:action="@{/birthdayManagement/update/id={id}(id=*{personId})}" th:object=${celebratedPerson} th:method="post">
 		
 			<!-- 名前 -->
 			<label th:text="#{name}" for="name"></label>
 			<input name="name" type="text" th:field="*{name}"> <!-- 自動でid生成何故？ -->
 			
 			<!-- 誕生日 -->
-			<label th:text="#{birthday}" for="birthday"></label>
-			<input name="birthday" type="date" th:field="*{birthday}"> <!-- javascriptでselectedを追加できるように出来ないと、selectタグの実装はきつそう -->
+			<label th:text="#{birthday}" for="birthDate"></label>
+			<input name="birthDate" type="date" th:field="*{birthDate}"> <!-- javascriptでselectedを追加できるように出来ないと、selectタグの実装はきつそう -->
 			
 			<!-- 年齢 -->
 			<label th:text="#{age}" for="age"></label>
@@ -43,15 +37,5 @@
 		</form>
 	</div>
 </main>
-<footer>
-	<div class="footer-content">
-		<div class="footer-left">
-			<h4><a th:href="@{/birthdayManagement/home}" th:text="#{app.footer.name}"></a></h4>
-		</div>
-		<div class="footer-right">
-			<a href="https://pixabay.com/ja/users/blickpixel-52945/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Michael Schwarzenberger</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=444518">Pixabay</a>からの画像
-		</div>
-	</div>
-</footer>
 </body>
 </html>

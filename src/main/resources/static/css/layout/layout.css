@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-
+/* タグ指定(順序) */
 body {
 	margin:0px;
 }
@@ -24,6 +24,13 @@ main {
 	height:853px;
 }
 
+footer {
+	background-color:#fff4f7;
+	height:30px;
+}
+
+/* タグ指定(不順) */
+
 table {
 	background-color:#fff;
 	border-collapse:collapse; /*セルの線を重ねる*/
@@ -43,10 +50,13 @@ td {
 	text-align:center;
 }
 
-footer {
-	background-color:#fff4f7;
-	height:30px;
+ul {
+  list-style-type: none;
+  padding:0; /* 左にできる隙間を消す */
 }
+
+
+/* class指定(順序) */
 
 .header-content {
 	width:90%;
@@ -69,8 +79,15 @@ footer {
 	font-size:19px;
 }
 
-.error-message {
-	color:red;
+.content {
+	padding-top:100px;
+	width:90%;
+	margin:0 auto;
+}
+
+.content-left, .content-right {
+	width:50%;
+	float:left;
 }
 
 .footer-content {
@@ -91,3 +108,8 @@ footer {
 	float:right;
 }
 
+/* class指定(不順) */
+
+.error-message {
+	color:red;
+}

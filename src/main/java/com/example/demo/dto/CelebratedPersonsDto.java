@@ -7,13 +7,14 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
 @Data
-public class RegistrationDto {
+public class CelebratedPersonsDto {
 	
-	private int id;
+	private int personId;
 	
 	@NotBlank(message="名前は必須入力です") // messageでエラーメッセージを指定できる
 	@Pattern(regexp=".*\s.*", message="名前の間に半角スペースを入れてください")
@@ -25,7 +26,8 @@ public class RegistrationDto {
 	
 	private String date;
 	
-	private LocalDate birthday;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate birthDate;
 	
 	@Max(value=130, message="年齢には130以下を入力して下さい")
 	@Min(value=0, message="年齢には正の値を入力して下さい")

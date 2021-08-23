@@ -7,13 +7,13 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DateService {
+public class EachDateList {
 	
 	private Set<Integer> years;
 	private Set<Integer> months;
 	private Set<Integer> dates;
 	
-	public DateService() {
+	public EachDateList() {
 		
 		// years
 		Set<Integer> years = new LinkedHashSet<>();

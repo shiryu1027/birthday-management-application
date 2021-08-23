@@ -1,20 +1,8 @@
 @charset "UTF-8";
 
-.content {
-	width:90%;
-	margin:0 auto;
-	padding-top:100px;
+/*後に消す*/
+.content-left, .content-right{
+	padding:300px 0; 
 	text-align:center;
 }
 
-.content-left{
-	width:50%;
-	float:left;
-	padding:300px 0; /*後に消す*/
-}
-
-.content-right{
-	width:50%;
-	float:right;
-	padding:300px 0;/*後に消す*/
-}
