@@ -40,4 +40,6 @@ public class UsersDto {
 	@Max(value=130, message="年齢には130以下を入力して下さい")
 	@Min(value=0, message="年齢には正の値を入力して下さい")
 	private int age;
+	
+	private String role;
 }

@@ -24,4 +24,6 @@ public class Users {
 	private LocalDate birthDate;
 	
 	private int age;
+	
+	private String role;
 }

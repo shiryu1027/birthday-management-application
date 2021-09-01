@@ -1,31 +1,32 @@
 @charset "UTF-8";
 
 /* タグ指定(順序) */
+
 body {
 	margin:0px;
 }
 
 header{
-	background-color:rgb(255, 208, 255);
 	position:fixed;
 	width:100%;
+	background-color:rgba(40, 90, 190, 0.3);
 	opacity:0.9;
 }
 
 header h1{
-	margin:0px;
 	line-height:80px;
+	margin:0px;
 }
 
 main {
+	height:853px;
 	margin:0 auto;
 	background-image:url("/images/gift-444518_1280.jpg");
 	background-size:cover;
-	height:853px;
 }
 
 footer {
-	background-color:#fff4f7;
+	background-color:rgba(40, 90, 190, 0.3);
 	height:30px;
 }
 
@@ -67,16 +68,36 @@ ul {
 	float:left;
 }
 
+.header-left a{
+	text-decoration: none; /* aタグの下線を削除 */
+	color:white; /* 必須 */
+	font-weight:bold;
+	font-style:italic;
+	padding:10px 20px;
+	border-radius:7px;
+	background-color:rgba(135, 206, 235, 0.7);
+}
+
 .header-right {
 	float:right;
 }
 
-.header-right a {
-	line-height:80px;
-	background-color:rgb(255, 176, 255);
+.header-right form {
 	display:inline-block;
+	line-height:80px;
+	background-color:rgba(135, 206, 235, 0.7);
 	padding:0 20px;
 	font-size:19px;
+}
+
+.header-right input {
+	background-color:transparent;
+	border-style:none;
+	text-decoration:underline;
+	cursor:pointer;
+	font-size:19px;
+	width:120px;
+	color: white;
 }
 
 .content {
@@ -101,6 +122,7 @@ ul {
 }
 
 .footer-left h4 {
+	color:white;
 	margin:0;
 }
 

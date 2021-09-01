@@ -56,7 +56,8 @@ public class SignupController {
 			model.addAttribute("validationError", errorList);
 			return registrationDisplay(model);
 		}
-		
+		//usersDto.setRole("ADMIN");
+		usersDto.setRole("GENERAL");
 		usersDto.setBirthDate(stringToLocalDate.stringToLocalDate(usersDto));
 		usersDto.setAge(ageCalculation.ageCalc(usersDto.getBirthDate()));
 		

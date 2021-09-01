@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/layout}">
+<head>
+	<meta charset="UTF-8">
+	<title th:text="#{app.name}"></title>
+</head>
+<body>
+<main layout:fragment="content">
+	<div class="content">
+		<table>
+			<tr>
+				<th th:text="#{userId}"></th>
+				<th th:text="#{mailAddress}"></th>
+				<!-- <th th:text="#{password}"></th> --><!-- 非表示にしないと、映らない? -->
+				<th th:text="#{name}"></th>
+				<th th:text="#{birthDate}"></th>
+				<th th:text="#{age}"></th>
+				<th th:text="#{role}"></th>
+				<!-- <th th:text="#{birthday.list.update.button}"></th> -->
+				<th th:text="#{delete.button}"></th>
+			</tr>
+			<tr th:each="user:${users}" th:object="${user}"> <!-- 確認のためリスト名と、変数名を変えてある、のちにチェック要 -->
+				<td th:text="*{userId}"></td>
+				<td th:text="*{mailAddress}"></td>
+				<td th:text="*{name}"></td>
+				<td th:text="*{birthDate}"></td>
+				<td th:text="*{age}"></td>
+				<td th:text="*{role}"></td>
+				<td><form th:action="@{/admin/delete/id={id}(id=*{userId})}" th:method="POST"><button th:text="#{delete.button}"></button></form></td>
+			</tr>
+		</table>
+	</div>
+</main>
+</body>
+</html>
+
+<!--<td><a th:href="@{/birthdayManagement/update/id={id}(id=*{personId})}"><button th:text="#{birthday.list.update.button}"></button></a></td> -->

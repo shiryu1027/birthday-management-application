@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.repository.UsersMapper">
 
-<resultMap type="com.example.demo.entity.Users" id="celebratedPersons">
+<resultMap type="com.example.demo.entity.Users" id="users">
 	<id column="user_id" property="userId" />
 	<result column="mail_address" property="mailAddress" />
 	<result column="password" property="password" />
@@ -13,7 +13,20 @@
 </resultMap>
 
 <insert id="signUp">
-	INSERT INTO users (mail_address, password, name, birth_date, age) VALUES (#{mailAddress}, #{password}, #{name},#{birthDate}, #{age}) 
+	INSERT INTO users (mail_address, password, name, birth_date, age, role) VALUES (#{mailAddress}, #{password}, #{name},#{birthDate}, #{age}, #{role}) 
 </insert>
+
+<select id="selectAll" resultMap="users">
+	SELECT * FROM users
+</select>
+
+<delete id="delete">
+	DELETE FROM users WHERE user_id=#{userId}
+</delete>
+
+<!-- サインインユーザー取得 -->
+<select id="findLoginUser" resultMap="users">
+	SELECT * FROM users where mail_address=#{mailAddress}
+</select>
 
 </mapper>

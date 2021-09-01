@@ -10,6 +10,7 @@ import lombok.Data;
 
 @Data
 public class SignInDto {
+	// UsersDtoでは代替不能=nameなどでもエラーが起きるから
 	
 	@Email(message="メードアドレス形式で入力して下さい", groups=ValidGroup2.class) //type="Emailにすると、これがいらなくなる　→　Chromeだと自動
 	@NotBlank(message="メールアドレスは必須入力です", groups=ValidGroup1.class)

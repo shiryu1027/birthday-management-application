@@ -68,6 +68,8 @@ layout:decorate="~{layout/layout}">
 			<input name="age" id="age" type="number" value="0"><br> -->
 			
 			<button th:text="#{user.signup.post.button}"></button>
+			<!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
+			<!-- CSRFトークンはth:actionだと自動追加 -->
 		</form>
 		<form th:action="@{/users/signin}">
 			<button th:text="#{user.signin.return}"></button>

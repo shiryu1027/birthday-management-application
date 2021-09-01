@@ -23,6 +23,7 @@ public class SigninController {
 	// サインイン画面の表示
 	@GetMapping("/signin")
 	public String signInDisplay(Model model) {
+		model.addAttribute("notSignin", "");
 		return "users/signin";
 	}
 	
